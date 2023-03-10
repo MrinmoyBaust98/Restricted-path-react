@@ -1,0 +1,14 @@
+.nav-link li{
+    margin-left: 10px;
+    display: inline-block;
+}
+.nav-link .active{
+    color: red;
+}
+.link{
+    text-decoration: none;
+   
+}
+.nav-link button{
+    margin-left: 20px;
+}

@@ -1,10 +1,15 @@
 import React from "react";
-import { Navigate, Outlet } from "react-router-dom";
+import { Navigate, Outlet, useLocation } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 
 const PrivateRoute = () => {
   const { user } = useAuth();
-  return user.email ? <Outlet /> : <Navigate replace to="/login"></Navigate>;
+  const location = useLocation();
+  return user.email ? (
+    <Outlet />
+  ) : (
+    <Navigate to="/login" replace state={{ from: location }} />
+  );
 };
 
 export default PrivateRoute;

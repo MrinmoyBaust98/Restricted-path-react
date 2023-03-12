@@ -13,21 +13,14 @@ firebaseInitialize();
 
 const useFirebase = () => {
   const [user, setUser] = useState({});
-  const [error, setError] = useState("");
+
   const gogleProvider = new GoogleAuthProvider();
   const auth = getAuth();
 
   // ekta function create kore nibo ..karon atake export korbo...buttob gula atake use korbe
 
   const signInWithGogle = () => {
-    signInWithPopup(auth, gogleProvider)
-      .then((result) => {
-        setUser(result.user);
-        console.log(result.user);
-      })
-      .catch((error) => {
-        setError(error.message);
-      });
+    return signInWithPopup(auth, gogleProvider);
   };
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
@@ -47,7 +40,6 @@ const useFirebase = () => {
   return {
     signInWithGogle,
     user,
-    error,
     logOut,
   };
 };
